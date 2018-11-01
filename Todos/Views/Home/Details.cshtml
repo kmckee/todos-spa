@@ -1,0 +1,26 @@
+﻿@model Todos.Models.Todo
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <h1>@Model.Name</h1>
+    <p>
+        This todo is related to the following topics:
+    </p>
+    <ul id="topics">
+        @foreach (var todoTopic in Model.TodoTopics)
+        {
+            <li>@todoTopic.Topic.Title</li>
+        }
+    </ul>
+</body>
+</html>
