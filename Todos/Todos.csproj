@@ -5,7 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <Compile Remove="Migrations\20181102150458_AddComments.cs" />
+    <Compile Remove="Migrations\20181102150458_AddComments.Designer.cs" />
+    <Compile Remove="Migrations\20181102174906_AddTodoIdToComment.cs" />
+    <Compile Remove="Migrations\20181102174906_AddTodoIdToComment.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

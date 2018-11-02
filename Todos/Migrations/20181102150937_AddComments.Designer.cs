@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Todos.Models;
 
 namespace Todos.Migrations
 {
     [DbContext(typeof(TodoContext))]
-    partial class TodoContextModelSnapshot : ModelSnapshot
+    [Migration("20181102150937_AddComments")]
+    partial class AddComments
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,7 +31,7 @@ namespace Todos.Migrations
 
                     b.Property<string>("Text");
 
-                    b.Property<int>("TodoId");
+                    b.Property<int?>("TodoId");
 
                     b.HasKey("Id");
 
@@ -38,7 +40,7 @@ namespace Todos.Migrations
                     b.ToTable("Comments");
 
                     b.HasData(
-                        new { Id = 1, CreatedAt = new DateTime(2018, 11, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), Text = "Vacuuming is the worst!", TodoId = 3 }
+                        new { Id = 1, CreatedAt = new DateTime(2018, 11, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), Text = "Vacuuming is the worst!" }
                     );
                 });
 
@@ -112,8 +114,7 @@ namespace Todos.Migrations
                 {
                     b.HasOne("Todos.Models.Todo")
                         .WithMany("Comments")
-                        .HasForeignKey("TodoId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("TodoId");
                 });
 
             modelBuilder.Entity("Todos.Models.TodoTopic", b =>

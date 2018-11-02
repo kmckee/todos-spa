@@ -24,6 +24,7 @@ namespace Todos
             services.AddDbContext<TodoContext>();
 
             services.AddScoped<ITodoRepository, TodoRepository>();
+            services.AddScoped<ICommentRepository, CommentRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,7 +38,7 @@ namespace Todos
             {
                 app.UseHsts();
             }
-
+            app.UseStaticFiles();
             app.UseHttpsRedirection();
             app.UseMvcWithDefaultRoute();
         }

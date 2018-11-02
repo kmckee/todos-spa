@@ -10,17 +10,34 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Details</title>
+    <script>
+        var todoId = @Model.Id;
+    </script>
+    <script src="~/comments.js"></script>
+
 </head>
 <body>
     <h1>@Model.Name</h1>
-    <p>
-        This todo is related to the following topics:
-    </p>
-    <ul id="topics">
-        @foreach (var todoTopic in Model.TodoTopics)
-        {
-            <li>@todoTopic.Topic.Title</li>
-        }
-    </ul>
+    <section>
+        <p>
+            This todo is related to the following topics:
+        </p>
+        <ul id="topics">
+            @foreach (var todoTopic in Model.TodoTopics)
+            {
+                <li>@todoTopic.Topic.Title</li>
+            }
+        </ul>
+    </section>
+
+    <section>
+        <h2>Comments</h2>
+        <ol id="comment-list">
+        </ol>
+    </section>
+
+    <h3>New Comment</h3>
+    <textarea id="new-comment"></textarea>
+    <button id="save-comment">Save</button>
 </body>
 </html>
